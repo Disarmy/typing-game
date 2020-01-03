@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-public class AudioPanelListener implements ActionListener, ChangeListener, ItemListener {
+public class AudioPanelListener {
     AudioPanel view;
 
     public AudioPanelListener(AudioPanel view) {
@@ -42,20 +42,10 @@ public class AudioPanelListener implements ActionListener, ChangeListener, ItemL
         Settings.setBackgroundMusicVolume(view.getBackgroundSlider().getValue());
     }
 
-    private void onOkButtonClicked() {
+    public void onOkButtonClicked() {
         view.getOwner().setVisible(false);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case "확인":
-                onOkButtonClicked();
-                break;
-        }
-    }
-
-    @Override
     public void itemStateChanged(ItemEvent e) {
         JCheckBox checkBox = (JCheckBox) e.getSource();
         if (checkBox == view.getEffectCheckBox())
@@ -64,7 +54,6 @@ public class AudioPanelListener implements ActionListener, ChangeListener, ItemL
             onBackgroundCheckBoxItemStateChanged();
     }
 
-    @Override
     public void stateChanged(ChangeEvent e) {
         JSlider slider = (JSlider) e.getSource();
         if (slider == view.getEffectSlider())

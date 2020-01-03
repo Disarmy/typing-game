@@ -30,12 +30,12 @@ public class WordPanel extends JPanel {
         loadButton.setBackground(MyColor.DARK);
         saveButton.setBackground(MyColor.DARK);
 
-        list.addListSelectionListener(controller);
+        list.addListSelectionListener(e-> controller.valueChanged(e));
         textField.addActionListener(e -> addButton.doClick());
-        addButton.addActionListener(controller);
-        removeButton.addActionListener(controller);
-        loadButton.addActionListener(controller);
-        saveButton.addActionListener(controller);
+        addButton.addActionListener(e-> controller.onAddButtonClicked());
+        removeButton.addActionListener(e-> controller.onRemoveButtonClicked());
+        loadButton.addActionListener(e-> controller.onLoadButtonClicked());
+        saveButton.addActionListener(e-> controller.onSaveButtonClicked());
 
         loadButton.doClick();
 

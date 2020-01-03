@@ -1,5 +1,7 @@
 package view;
 
+import controller.Game;
+import controller.BrainGame;
 import controller.GameFrameListener;
 
 import javax.swing.*;
@@ -46,10 +48,10 @@ public class GameFrame extends JFrame {
         leaderBoardMenuItem.setBackground(MyColor.DARK);
         exitMenuItem.setBackground(MyColor.DARK);
 
-        newGameMenuItem.addActionListener(controller);
-        newGameBrainMenuItem.addActionListener(controller);
-        leaderBoardMenuItem.addActionListener(controller);
-        exitMenuItem.addActionListener(controller);
+        newGameMenuItem.addActionListener(e-> controller.onNewGameMenuItemClicked());
+        newGameBrainMenuItem.addActionListener(e-> controller.onNewGameBrainMenuItemClicked());
+        leaderBoardMenuItem.addActionListener(e-> controller.onLeaderBoardMenuItemClicked());
+        exitMenuItem.addActionListener(e-> controller.onExitMenuItemClicked());
 
         gameMenu.add(newGameMenuItem);
         gameMenu.add(newGameBrainMenuItem);
@@ -63,7 +65,7 @@ public class GameFrame extends JFrame {
 
         wordListMenuItem.setBackground(MyColor.DARK);
 
-        wordListMenuItem.addActionListener(controller);
+        wordListMenuItem.addActionListener(e-> controller.onWordListMenuItemClicked());
 
         wordMenu.add(wordListMenuItem);
 
@@ -72,7 +74,7 @@ public class GameFrame extends JFrame {
 
         soundSettings.setBackground(MyColor.DARK);
 
-        soundSettings.addActionListener(controller);
+        soundSettings.addActionListener(e-> controller.onSoundSettingsMenuItemClicked());
 
         settingsMenu.add(soundSettings);
 
@@ -96,10 +98,10 @@ public class GameFrame extends JFrame {
         leaderBoardButton.setBackground(MyColor.LIGHT);
         wordListButton.setBackground(MyColor.LIGHT);
 
-        newGameButton.addActionListener(controller);
-        newGameBrainButton.addActionListener(controller);
-        leaderBoardButton.addActionListener(controller);
-        wordListButton.addActionListener(controller);
+        newGameButton.addActionListener(e-> controller.onNewGameMenuItemClicked());
+        newGameBrainButton.addActionListener(e-> controller.onNewGameBrainMenuItemClicked());
+        leaderBoardButton.addActionListener(e-> controller.onLeaderBoardMenuItemClicked());
+        wordListButton.addActionListener(e-> controller.onWordListMenuItemClicked());
 
         toolBar.add(new JLabel(" 게임 시작 "));
         toolBar.add(newGameButton);

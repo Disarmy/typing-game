@@ -25,11 +25,11 @@ public class AudioPanel extends JPanel {
         backgroundSlider.setBackground(MyColor.BASE);
         okButton.setBackground(MyColor.DARK);
 
-        effectCheckBox.addItemListener(controller);
-        effectSlider.addChangeListener(controller);
-        backgroundCheckBox.addItemListener(controller);
-        backgroundSlider.addChangeListener(controller);
-        okButton.addActionListener(controller);
+        effectCheckBox.addItemListener(e-> controller.itemStateChanged(e));
+        effectSlider.addChangeListener(e-> controller.stateChanged(e));
+        backgroundCheckBox.addItemListener(e-> controller.itemStateChanged(e));
+        backgroundSlider.addChangeListener(e-> controller.stateChanged(e));
+        okButton.addActionListener(e-> controller.onOkButtonClicked());
 
         add(effectCheckBox);
         add(effectSlider);

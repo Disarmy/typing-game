@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GameFrameListener implements ActionListener {
+public class GameFrameListener {
     private GameFrame view;
     private Game game;
     private BrainGame brainGame;
@@ -28,7 +28,7 @@ public class GameFrameListener implements ActionListener {
         brainGame = null;
     }
 
-    private void onNewGameMenuItemClicked() {
+    public void onNewGameMenuItemClicked() {
         if (isGameRunning()) {
             if (JOptionPane.showConfirmDialog(view, "게임이 이미 진행 중입니다.\n새 게임을 시작할까요?", view.getTitle(), 2) == 2)
                 return;
@@ -40,7 +40,7 @@ public class GameFrameListener implements ActionListener {
         th.start();
     }
 
-    private void onNewGameBrainMenuItemClicked() {
+    public void onNewGameBrainMenuItemClicked() {
         if (isGameRunning()) {
             if (JOptionPane.showConfirmDialog(view, "게임이 이미 진행 중입니다.\n새 게임을 시작할까요?", view.getTitle(), 2) == 2)
                 return;
@@ -52,53 +52,29 @@ public class GameFrameListener implements ActionListener {
         th.start();
     }
 
-    private void onLeaderBoardMenuItemClicked() {
+    public void onLeaderBoardMenuItemClicked() {
         if (!view.getLeaderBoardDialog().isVisible())
             view.getLeaderBoardDialog().setVisible(true);
         else
             view.getLeaderBoardDialog().requestFocus();
     }
 
-    private void onExitMenuItemClicked() {
+    public void onExitMenuItemClicked() {
         if (JOptionPane.showConfirmDialog(view, "정말로 종료할까요?", view.getTitle(), 0) == 0)
             System.exit(0);
     }
 
-    private void onWordListMenuItemClicked() {
+    public void onWordListMenuItemClicked() {
         if (!view.getWordDialog().isVisible())
             view.getWordDialog().setVisible(true);
         else
             view.getWordDialog().requestFocus();
     }
 
-    private void onSoundSettingsMenuItemClicked() {
+    public void onSoundSettingsMenuItemClicked() {
         if (!view.getAudioDialog().isVisible())
             view.getAudioDialog().setVisible(true);
         else
             view.getAudioDialog().requestFocus();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        switch (e.getActionCommand()) {
-            case "새 클래식 게임":
-                onNewGameMenuItemClicked();
-                break;
-            case "새 브레인 게임":
-                onNewGameBrainMenuItemClicked();
-                break;
-            case "리더보드":
-                onLeaderBoardMenuItemClicked();
-                break;
-            case "끝내기":
-                onExitMenuItemClicked();
-                break;
-            case "단어 목록":
-                onWordListMenuItemClicked();
-                break;
-            case "소리 설정":
-                onSoundSettingsMenuItemClicked();
-                break;
-        }
     }
 }

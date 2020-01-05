@@ -1,7 +1,5 @@
 package view;
 
-import controller.Game;
-import controller.BrainGame;
 import controller.GameFrameListener;
 
 import javax.swing.*;
